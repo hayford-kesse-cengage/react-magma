@@ -1,0 +1,9 @@
+interface:
+  display_name: "React Magma"
+  short_description: "Component APIs and usage patterns for React Magma"
+  icon_small: "./assets/icon.svg"
+  icon_large: "./assets/icon.png"
+  brand_color: "#3942B0"
+
+policy:
+  allow_implicit_invocation: true

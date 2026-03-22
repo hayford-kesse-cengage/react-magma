@@ -130,6 +130,7 @@ function ActionsDropdown() {
 ## Form with Validation
 
 ```tsx
+import React from 'react';
 import {
   Form,
   Input,
@@ -138,7 +139,6 @@ import {
   ButtonType,
   ButtonColor,
   ButtonGroup,
-  FormGroup,
   Spacer,
 } from 'react-magma-dom';
 
@@ -155,7 +155,7 @@ function ContactForm() {
       header="Contact Us"
       actions={
         <ButtonGroup>
-          <Button color={ButtonColor.secondary}>Cancel</Button>
+          <Button color={ButtonColor.subtle}>Cancel</Button>
           <Button type={ButtonType.submit}>Submit</Button>
         </ButtonGroup>
       }
@@ -167,7 +167,7 @@ function ContactForm() {
           onChange={e => setName(e.target.value)}
           required
         />
-        <Spacer size="12" />
+        <Spacer size={12} />
         <Select
           labelText="Subject"
           items={[
@@ -267,6 +267,7 @@ function InfoPopover() {
 ## Modal
 
 ```tsx
+import React from 'react';
 import { Modal, ModalSize, Button } from 'react-magma-dom';
 
 function ConfirmModal() {
@@ -291,6 +292,7 @@ function ConfirmModal() {
 ## Toast Notifications
 
 ```tsx
+import React from 'react';
 import { ToastsContainer, Toast, Button } from 'react-magma-dom';
 
 function AppWithToasts() {
@@ -421,6 +423,7 @@ function PageBreadcrumb() {
 ## Drawer
 
 ```tsx
+import React from 'react';
 import { Drawer, DrawerPosition, Button } from 'react-magma-dom';
 
 function SideDrawer() {

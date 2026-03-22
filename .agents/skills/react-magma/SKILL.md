@@ -2,6 +2,9 @@
 name: react-magma
 description: "Provides component APIs and usage patterns for React Magma (react-magma-dom) — Cengage's accessible React component library. Activates when working with react-magma-dom components, theming, i18n, or any project with react-magma-dom in its dependencies."
 user-invocable: false
+metadata:
+  author: "Cengage"
+  version: "4.x"
 ---
 
 # React Magma — Agent Instructions
@@ -17,7 +20,7 @@ React Magma is Cengage's open-source, accessibility-first React component librar
 | `@react-magma/charts` | Data visualization (bar, line, area, pie, donut charts) |
 | `@react-magma/dropzone` | Drag-and-drop file upload |
 
-Peer dependencies: `react >= 16.8`, `react-dom >= 16.8`, `@emotion/react`, `@emotion/styled`.
+Peer dependencies: `react >= 17.0.2`, `react-dom >= 17.0.2`, `@emotion/react >= 11.14.0`, `@emotion/styled >= 11.14.0`, `date-fns`, `downshift`, `framer-motion`, `react-magma-icons >= 3.2.4`, `uuid`.
 
 ---
 
@@ -25,7 +28,7 @@ Peer dependencies: `react >= 16.8`, `react-dom >= 16.8`, `@emotion/react`, `@emo
 
 ### RULE: Wrap root in ThemeContext.Provider + GlobalStyles
 
-Every app must include this at the root. Without it, components will not render correctly.
+Every app should include this at the root. Components will render with default theme values without it, but wrapping ensures consistent theming and global styles.
 
 ```tsx
 import { ThemeContext, magma, GlobalStyles } from 'react-magma-dom';
@@ -64,6 +67,8 @@ import { Button, ButtonColor, ButtonVariant } from 'react-magma-dom';
 // WRONG — string literals will not type-check
 <Button color="primary" variant="solid">Save</Button>
 ```
+
+> **JavaScript projects:** Enums compile to plain objects. `import { ButtonColor } from 'react-magma-dom'` works in JS — you do not need TypeScript to use them.
 
 ### RULE: Use isInverse for dark mode, not custom themes
 
@@ -155,35 +160,35 @@ Always provide `labelText` on form inputs. Never use placeholder text as a subst
 
 | Component | Key Enums | Sub-components |
 |-----------|-----------|----------------|
-| **Button** | `ButtonColor` (primary, secondary, subtle, danger), `ButtonVariant` (solid, link), `ButtonSize` (small, medium, large), `ButtonType` (button, submit, reset) | — |
-| **Input** | `InputSize` (large, medium), `InputType` (text, number, email, password, search, tel, url) | `InputMessage` |
+| **Button** | `ButtonColor` (primary, secondary, subtle, danger, success, marketing), `ButtonVariant` (solid, link), `ButtonShape` (fill, leftCap, rightCap, round), `ButtonSize` (small, medium, large), `ButtonType` (button, submit, reset) | — |
+| **Input** | `InputSize` (large, medium), `InputType` (text, number, email, password, search, tel, url, file) | `InputMessage` |
 | **Select** | `SelectStateChangeTypes`, `MultipleSelectionStateChangeTypes` | — |
 | **Combobox** | `ComboboxStateChangeTypes` | — |
 | **Checkbox** | `CheckboxTextPosition` (left, right) | — |
 | **Radio** | `RadioTextPosition` (left, right) | `RadioGroup` |
 | **Toggle** | `ToggleTextPosition` (left, right) | — |
-| **Table** | `TableDensity`, `TableCellAlign`, `TableSortDirection`, `TableRowColor`, `TableHeaderCellScope` | `TableHead`, `TableBody`, `TableRow`, `TableHeaderCell`, `TableCell`, `TablePagination` |
-| **Tabs** | `TabsAlignment`, `TabsBorderPosition`, `TabsIconPosition`, `TabsOrientation`, `TabsTextTransform` | `Tab`, `TabPanel`, `TabsContainer`, `TabPanelsContainer`, `CustomTab` |
-| **Dropdown** | `DropdownAlignment`, `DropdownDropDirection` | `DropdownButton`, `DropdownContent`, `DropdownMenuItem`, `DropdownMenuGroup`, `DropdownHeader`, `DropdownDivider`, `DropdownSplitButton` |
+| **Table** | `TableDensity` (compact, loose, normal), `TableCellAlign` (center, inherit, justify, left, right), `TableSortDirection` (ascending, descending, none), `TableRowColor` (danger, info, success, warning), `TableHeaderCellScope` (col, colgroup, row, rowgroup) | `TableHead`, `TableBody`, `TableRow`, `TableHeaderCell`, `TableCell`, `TablePagination` |
+| **Tabs** | `TabsAlignment` (center, left, right), `TabsBorderPosition` (bottom, left, right, top), `TabsIconPosition` (bottom, left, right, top), `TabsOrientation` (horizontal, vertical), `TabsTextTransform` (uppercase, none) | `Tab`, `TabPanel`, `TabsContainer`, `TabPanelsContainer`, `CustomTab` |
+| **Dropdown** | `DropdownAlignment` (start, end), `DropdownDropDirection` (down, left, right, up) | `DropdownButton`, `DropdownContent`, `DropdownMenuItem`, `DropdownMenuGroup`, `DropdownHeader`, `DropdownDivider`, `DropdownSplitButton` |
 | **Accordion** | `AccordionIconPosition` (left, none, right) | `AccordionItem`, `AccordionButton`, `AccordionPanel` |
-| **Modal** | `ModalSize` | — |
+| **Modal** | `ModalSize` (small, medium, large) | — |
 | **Drawer** | `DrawerPosition` (top, bottom, left, right) | — |
-| **Popover** | `PopoverPosition`, `PopoverAlignment` | `PopoverTrigger`, `PopoverContent`, `PopoverHeader`, `PopoverFooter` |
-| **Tooltip** | `TooltipPosition` | — |
-| **Alert** | `AlertVariant` | — |
-| **Badge** | `BadgeColor`, `BadgeVariant` | — |
-| **Card** | `CardAlignment`, `CardCalloutType` | `CardBody`, `CardHeading` |
+| **Popover** | `PopoverPosition` (bottom, top), `PopoverAlignment` (center, start, end) | `PopoverTrigger`, `PopoverContent`, `PopoverHeader`, `PopoverFooter` |
+| **Tooltip** | `TooltipPosition` (bottom, left, right, top) | — |
+| **Alert** | `AlertVariant` (info, success, warning, danger) | — |
+| **Badge** | `BadgeColor` (danger, primary, secondary, success, light), `BadgeVariant` (counter, label) | — |
+| **Card** | `CardAlignment` (center, left, right), `CardCalloutType` (danger, primary, success, warning, info) | `CardBody`, `CardHeading` |
 | **Tag** | `TagColor` (default, primary, lowContrast, highContrast), `TagSize` (medium, small) | — |
 | **Heading** | `TypographyVisualStyle`, `TypographyColor`, `TypographyContextVariant` | — |
 | **Paragraph** | `TypographyVisualStyle`, `TypographyColor`, `TypographyContextVariant` | — |
-| **Stepper** | `StepperLayout`, `StepperOrientation` | `Step`, `ResponsiveStepperContainer` |
-| **Pagination** | `PageButtonSize`, `PaginationType` | — |
-| **Grid** | `GridDisplay`, `GridJustifyContent`, `GridAlignItems`, `GridAutoFlow` | `GridItem` |
+| **Stepper** | `StepperLayout` (showLabels, hideLabels, summaryView), `StepperOrientation` (horizontal, vertical) | `Step`, `ResponsiveStepperContainer` |
+| **Pagination** | `PageButtonSize` (medium, large), `PaginationType` (classic, simple) | — |
+| **Grid** | `GridDisplay` (grid, inlineGrid), `GridJustifyContent` (start, end, center, stretch, spaceAround, spaceBetween, spaceEvenly), `GridAlignItems` (start, end, center, stretch), `GridAutoFlow` (row, column, rowDense, columnDense) | `GridItem` |
 | **Flex** | `FlexDirection`, `FlexJustify`, `FlexAlignItems`, `FlexAlignContent`, `FlexBehavior` (container, item, both), `FlexWrap` | — |
 | **TreeView** | `TreeViewSelectable`, `TreeNodeType` | `TreeItem` |
 | **Toast** | — | `ToastsContainer` |
-| **LoadingIndicator** | `LoadingIndicatorType` | — |
-| **ProgressBar** | `ProgressBarColor` | — |
+| **LoadingIndicator** | `LoadingIndicatorType` (progressbar, spinner) | — |
+| **ProgressBar** | `ProgressBarColor` (danger, primary, success) | — |
 
 ---
 

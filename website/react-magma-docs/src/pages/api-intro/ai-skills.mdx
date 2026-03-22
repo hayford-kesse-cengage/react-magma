@@ -1,0 +1,195 @@
+---
+title: AI Skills
+order: 6
+---
+
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableHeaderCell,
+  TableBody,
+  TableCell,
+} from 'react-magma-dom';
+
+<PageContent componentName="ai_skills" type="api_intro">
+
+<LeadParagraph>
+  React Magma ships a built-in AI skill that teaches 40+ AI coding tools how to
+  use the component library correctly. Install it once and your AI assistant
+  gains knowledge of component APIs, enum values, theming, compound patterns,
+  and design best practices.
+</LeadParagraph>
+
+## What Are AI Skills?
+
+AI skills are structured reference files that teach AI coding tools about a specific library. They follow the [Agent Skills](https://agentskills.io) open standard. When a skill is installed, your AI tool loads these files as context so it can reference the library's actual API and conventions instead of guessing.
+
+React Magma's skill covers imports, TypeScript enums, compound component patterns, theming, and accessibility requirements. It works with any tool that supports the Agent Skills spec.
+
+## Supported Tools
+
+The React Magma skill works with any AI coding tool that supports the Agent Skills spec:
+
+- **OpenAI Codex** (CLI, App, and Web)
+- **Claude Code**
+- **Cursor**
+- **GitHub Copilot**
+- **Windsurf**
+- **Cline**
+- And 40+ other tools
+
+## Installation
+
+If you are contributing to the React Magma repo using Codex, the skill is already configured via `.agents/skills/`. For other tools, run `npx skills add .` from the repo root.
+
+For consumer projects, follow the instructions for your tool below.
+
+### Codex (CLI, App, Web)
+
+Install via the Codex app:
+
+```sh-title-noRender-noCodeSandbox
+$skill-installer cengage/react-magma
+```
+
+### Claude Code, Cursor, Copilot, and Others
+
+Run this once in your project directory:
+
+```sh-title-noRender-noCodeSandbox
+npx skills add cengage/react-magma
+```
+
+This auto-detects which AI tools are installed and writes configuration to the correct location for each. To install to all supported tools at once, add the `--all` flag:
+
+```sh-title-noRender-noCodeSandbox
+npx skills add cengage/react-magma --all
+```
+
+## What the Skill Teaches
+
+Once installed, your AI tool will automatically follow these conventions:
+
+<Table hasOutsideBorder>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell>Capability</TableHeaderCell>
+      <TableHeaderCell>Description</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell>Correct imports</TableCell>
+      <TableCell>All imports from <code>react-magma-dom</code>, never from internal paths</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>TypeScript enums</TableCell>
+      <TableCell><code>ButtonColor.primary</code> instead of string literals like <code>"primary"</code>. See <Link to="/api-intro/usage">Usage</Link>.</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>App root setup</TableCell>
+      <TableCell>Includes <code>ThemeContext.Provider</code> and <code>GlobalStyles</code>. See <Link to="/api-intro/styles-and-themes">Styles and Themes</Link>.</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Compound components</TableCell>
+      <TableCell>Correct patterns for <Link to="/api/table">Table</Link>, <Link to="/api/tabs">Tabs</Link>, Dropdown, Accordion, and Popover.</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Dark mode</TableCell>
+      <TableCell>Uses the <code>isInverse</code> prop instead of custom dark themes. See <Link to="/api-intro/styles-and-themes">Styles and Themes</Link>.</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Separate packages</TableCell>
+      <TableCell>Icons from <code>react-magma-icons</code>, charts from <code>@react-magma/charts</code>, dropzone from <code>@react-magma/dropzone</code>. See <Link to="/api-intro/introduction">Getting Started</Link>.</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Design best practices</TableCell>
+      <TableCell>Semantic color usage, spacing scale tokens, proper heading hierarchy, accessible patterns.</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Verifying the Installation
+
+After installing, test with a prompt like:
+
+> "Build a form with a name input, select dropdown, and submit button using React Magma"
+
+The output should look something like this:
+
+```jsx-noRender-startExpanded
+import React from 'react';
+import {
+  Input,
+  Select,
+  Button,
+  ButtonColor,
+  ButtonType,
+  GlobalStyles,
+  ThemeContext,
+  magma,
+} from 'react-magma-dom';
+
+export function ExampleForm() {
+  return (
+    <ThemeContext.Provider value={magma}>
+      <GlobalStyles />
+      <Input labelText="Name" />
+      <Select labelText="Category" items={[{ label: 'Option A', value: 'a' }, { label: 'Option B', value: 'b' }]} />
+      <Button color={ButtonColor.primary} type={ButtonType.submit}>
+        Submit
+      </Button>
+    </ThemeContext.Provider>
+  );
+}
+```
+
+If the output uses string literals like `color="primary"`, imports from internal paths, or omits `labelText`, the skill may not be installed correctly.
+
+## What's Included
+
+The skill contains these reference files:
+
+<Table hasOutsideBorder>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell>File</TableHeaderCell>
+      <TableHeaderCell>Content</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell><code>SKILL.md</code></TableCell>
+      <TableCell>Critical rules, component quick reference, theming and i18n summaries</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell><code>references/components.md</code></TableCell>
+      <TableCell>Full component catalog with all enum values and sub-components</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell><code>references/theme.md</code></TableCell>
+      <TableCell>Complete color palette (hex values), spacing scale, type scale, breakpoints</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell><code>references/patterns.md</code></TableCell>
+      <TableCell>Code examples for compound components (Table, Tabs, Dropdown, Form, etc.)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell><code>references/best-practices.md</code></TableCell>
+      <TableCell>Design guidance: color semantics, typography, spacing, layout, accessibility</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## LLM Index
+
+For AI tools that support `llms.txt`, a machine-readable index of all React Magma components is available at:
+
+```
+https://react-magma.cengage.com/llms.txt
+```
+
+This provides component descriptions, enum values, and documentation links in a format optimized for large language models.
+
+</PageContent>

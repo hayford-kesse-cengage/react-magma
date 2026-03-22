@@ -1,12 +1,12 @@
 # React Magma Component Reference
 
-Complete component catalog with all enum values and sub-components. Every export comes from `react-magma-dom` unless noted otherwise.
+Complete component catalog with enum values and sub-components. Every export comes from `react-magma-dom` unless noted otherwise.
 
 ## Form Components
 
 ### Input
 Single-line text input.
-- **Enums:** `InputSize` (large, medium), `InputType` (text, number, email, password, search, tel, url), `InputIconPosition` (left, right)
+- **Enums:** `InputSize` (large, medium), `InputType` (text, number, email, password, search, tel, url, file), `InputIconPosition` (left, right, top)
 - **Sub-components:** `InputMessage`
 
 ### Textarea
@@ -72,9 +72,9 @@ Container for form fields with consistent spacing and layout.
 ### Button
 Primary action button.
 - **Enums:**
-  - `ButtonColor` — primary, secondary, subtle, danger
+  - `ButtonColor` — primary, secondary, subtle, danger, success, marketing
   - `ButtonVariant` — solid, link
-  - `ButtonShape` — fill, leftCap, rightCap
+  - `ButtonShape` — fill, leftCap, rightCap, round
   - `ButtonSize` — small, medium, large
   - `ButtonTextTransform` — none, uppercase
   - `ButtonType` — button, submit, reset
@@ -117,7 +117,7 @@ Max-width content container for page layout.
 
 ### Card
 Content card with optional heading and actions.
-- **Enums:** `CardAlignment`, `CardCalloutType`
+- **Enums:** `CardAlignment` (center, left, right), `CardCalloutType` (danger, primary, success, warning, info)
 - **Sub-components:** `CardBody`, `CardHeading`
 
 ### Grid / GridItem
@@ -148,7 +148,7 @@ Placeholder UI for empty content areas.
 
 ### Tabs (Compound)
 Tabbed content navigation.
-- **Enums:** `TabsAlignment`, `TabsBorderPosition`, `TabsIconPosition`, `TabsOrientation`, `TabsTextTransform`
+- **Enums:** `TabsAlignment` (center, left, right), `TabsBorderPosition` (bottom, left, right, top), `TabsIconPosition` (bottom, left, right, top), `TabsOrientation` (horizontal, vertical), `TabsTextTransform` (uppercase, none)
 - **Sub-components:** `Tab`, `TabPanel`, `TabsContainer`, `TabPanelsContainer`, `CustomTab`, `TabsScrollSpyContainer`, `TabScrollSpyPanel`
 
 ### NavTabs / NavTab
@@ -159,11 +159,11 @@ Breadcrumb navigation trail.
 
 ### Pagination
 Page navigation for lists/tables.
-- **Enums:** `PageButtonSize`, `PaginationType`
+- **Enums:** `PageButtonSize` (medium, large), `PaginationType` (classic, simple)
 
 ### Stepper (Compound)
 Multi-step progress indicator.
-- **Enums:** `StepperLayout`, `StepperOrientation`
+- **Enums:** `StepperLayout` (showLabels, hideLabels, summaryView), `StepperOrientation` (horizontal, vertical)
 - **Sub-components:** `Step`, `ResponsiveStepperContainer`
 
 ### SkipLink / SkipLinkContent
@@ -173,7 +173,7 @@ Accessibility skip navigation link.
 
 ### Alert
 Inline alert message.
-- **Enums:** `AlertVariant`
+- **Enums:** `AlertVariant` (info, success, warning, danger)
 
 ### Banner
 Full-width notification banner (info, warning, danger, success).
@@ -183,18 +183,18 @@ Temporary notification popup. Wrap your app with `ToastsContainer` to enable toa
 
 ### Badge
 Small status indicator label.
-- **Enums:** `BadgeColor`, `BadgeVariant`
+- **Enums:** `BadgeColor` (danger, primary, secondary, success, light), `BadgeVariant` (counter, label)
 
 ### Spinner
 Loading spinner animation.
 
 ### LoadingIndicator
 Loading state indicator with different visual types.
-- **Enums:** `LoadingIndicatorType`
+- **Enums:** `LoadingIndicatorType` (progressbar, spinner)
 
 ### ProgressBar
 Horizontal progress bar.
-- **Enums:** `ProgressBarColor`
+- **Enums:** `ProgressBarColor` (danger, primary, success)
 
 ### ProgressRing
 Circular progress indicator.
@@ -203,7 +203,7 @@ Circular progress indicator.
 
 ### Modal
 Dialog/modal overlay.
-- **Enums:** `ModalSize`
+- **Enums:** `ModalSize` (small, medium, large)
 
 ### Drawer
 Slide-in panel from screen edge.
@@ -211,23 +211,23 @@ Slide-in panel from screen edge.
 
 ### Dropdown (Compound)
 Action menu dropdown.
-- **Enums:** `DropdownAlignment`, `DropdownDropDirection`
+- **Enums:** `DropdownAlignment` (start, end), `DropdownDropDirection` (down, left, right, up)
 - **Sub-components:** `DropdownButton`, `DropdownContent`, `DropdownMenuItem`, `DropdownMenuGroup`, `DropdownMenuNavItem`, `DropdownHeader`, `DropdownDivider`, `DropdownSplitButton`, `DropdownExpandableMenuGroup`, `DropdownExpandableMenuItem`, `DropdownExpandableMenuButton`, `DropdownExpandableMenuPanel`, `DropdownExpandableMenuListItem`
 
 ### Popover (Compound)
 Content popover triggered by click or hover.
-- **Enums:** `PopoverPosition`, `PopoverAlignment`
+- **Enums:** `PopoverPosition` (bottom, top), `PopoverAlignment` (center, start, end)
 - **Sub-components:** `PopoverTrigger`, `PopoverContent`, `PopoverHeader`, `PopoverFooter`
 
 ### Tooltip
 Hover/focus tooltip.
-- **Enums:** `TooltipPosition` (aliased as `EnumTooltipPosition`)
+- **Enums:** `TooltipPosition` (bottom, left, right, top) (aliased as `EnumTooltipPosition`)
 
 ## Data Display
 
 ### Table (Compound)
 Data table with sorting and pagination.
-- **Enums:** `TableDensity`, `TableCellAlign`, `TableSortDirection`, `TableRowColor`, `TableHeaderCellScope`
+- **Enums:** `TableDensity` (compact, loose, normal), `TableCellAlign` (center, inherit, justify, left, right), `TableSortDirection` (ascending, descending, none), `TableRowColor` (danger, info, success, warning), `TableHeaderCellScope` (col, colgroup, row, rowgroup)
 - **Sub-components:** `TableHead`, `TableBody`, `TableRow`, `TableHeaderCell`, `TableCell`, `TablePagination`
 
 ### Datagrid

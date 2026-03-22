@@ -235,7 +235,7 @@ Access via `magma.iconSizes`. Values are in pixels.
 Create a custom theme by spreading the `magma` object and overriding values:
 
 ```tsx
-import { magma, ThemeContext } from 'react-magma-dom';
+import { magma, ThemeContext, GlobalStyles } from 'react-magma-dom';
 
 const customTheme = {
   ...magma,

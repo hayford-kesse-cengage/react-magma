@@ -4,7 +4,7 @@ description: "Provides component APIs and usage patterns for React Magma (react-
 user-invocable: false
 metadata:
   author: "Cengage"
-  version: "4.x"
+  version: "5.x"
 ---
 
 # React Magma — Agent Instructions
@@ -20,7 +20,7 @@ React Magma is Cengage's open-source, accessibility-first React component librar
 | `@react-magma/charts` | Data visualization (bar, line, area, pie, donut charts) |
 | `@react-magma/dropzone` | Drag-and-drop file upload |
 
-Peer dependencies: `react >= 17.0.2`, `react-dom >= 17.0.2`, `@emotion/react >= 11.14.0`, `@emotion/styled >= 11.14.0`, `date-fns`, `downshift`, `framer-motion`, `react-magma-icons >= 3.2.4`, `uuid`.
+Peer dependencies: `react >= 18.3.1`, `react-dom >= 18.3.1`, `@emotion/react >= 11.14.0`, `@emotion/styled >= 11.14.0`, `date-fns >= 2.12.0`, `downshift >= 5.4.5`, `framer-motion 11.18.2`, `react-magma-icons >= 3.2.4`, `uuid ^8.3.0 || ^9.0.0 || ^10.0.0 || ^11.0.0`.
 
 ---
 
@@ -70,21 +70,20 @@ import { Button, ButtonColor, ButtonVariant } from 'react-magma-dom';
 
 > **JavaScript projects:** Enums compile to plain objects. `import { ButtonColor } from 'react-magma-dom'` works in JS — you do not need TypeScript to use them.
 
-### RULE: Use isInverse for dark mode, not custom themes
+### RULE: Prefer isInverse for dark surfaces
 
-Dark/inverse mode is built in. Pass `isInverse` to container components. Do not create a separate dark theme.
+For isolated dark sections, use the built-in `isInverse` prop on container components — this is the simplest and most consistent approach.
 
 ```tsx
-// CORRECT
+// Preferred — use isInverse for dark sections
 <Card isInverse>
   <CardBody>
     <Heading isInverse level={2}>Dark Section</Heading>
   </CardBody>
 </Card>
-
-// WRONG — do not create a custom dark theme
-const darkTheme = { ...magma, colors: { ...magma.colors, background: '#000' } };
 ```
+
+For full-page dark theming, you can create a custom dark theme object and pass it to `ThemeContext.Provider`. See the [Styles and Themes](https://react-magma.cengage.com/api-intro/styles-and-themes) docs for details.
 
 ### RULE: Use compound components correctly
 

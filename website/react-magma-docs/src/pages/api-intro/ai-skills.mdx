@@ -50,7 +50,7 @@ For consumer projects, follow the instructions for your tool below.
 Install via the Codex app:
 
 ```sh-title-noRender-noCodeSandbox
-$skill-installer cengage/react-magma
+$skill-installer https://github.com/cengage/react-magma/tree/dev/skills/react-magma
 ```
 
 <style>{`
@@ -74,7 +74,7 @@ $skill-installer cengage/react-magma
 
 <img src="/images/codex-skill-installed.png" alt="React Magma skill installed in the Codex app" style={{ maxWidth: '500px', margin: '8px 0 16px' }} />
 
-Once installed, Codex automatically uses the skill whenever it detects a React Magma task — no need to manually activate it.
+After installing, restart Codex to pick up the new skill. Once loaded, Codex automatically uses the skill whenever it detects a React Magma task — no need to manually activate it.
 
 
 ### Claude Code, Cursor, Copilot, and Others
@@ -85,7 +85,7 @@ Run this once in your project directory:
 npx skills add cengage/react-magma
 ```
 
-This auto-detects which AI tools are installed and writes configuration to the correct location for each. To install to all supported tools at once, add the `--all` flag:
+This auto-detects which AI tools are installed and writes configuration to the correct location for each. If your AI tool does not detect the skill immediately, restart or reload it. To install to all supported tools at once, add the `--all` flag:
 
 ```sh-title-noRender-noCodeSandbox
 npx skills add cengage/react-magma --all

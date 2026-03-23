@@ -31,7 +31,7 @@ React Magma's skill covers imports, TypeScript enums, compound component pattern
 
 The React Magma skill works with any AI coding tool that supports the Agent Skills spec:
 
-- **OpenAI Codex** (CLI, App, and Web)
+- **OpenAI Codex** (CLI, App, and IDE extension)
 - **Claude Code**
 - **Cursor**
 - **GitHub Copilot**
@@ -45,13 +45,37 @@ If you are contributing to the React Magma repo using Codex, the skill is alread
 
 For consumer projects, follow the instructions for your tool below.
 
-### Codex (CLI, App, Web)
+### Codex (CLI, App, IDE Extension)
 
 Install via the Codex app:
 
 ```sh-title-noRender-noCodeSandbox
 $skill-installer cengage/react-magma
 ```
+
+<style>{`
+  @keyframes codex-bounce {
+    0%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-6px) rotate(-10deg); }
+    50% { transform: translateY(-3px) rotate(5deg); }
+    70% { transform: translateY(-1px); }
+  }
+  .codex-icon:hover {
+    animation: codex-bounce 0.6s ease;
+  }
+`}</style>
+
+<div style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '16px 0 8px' }}>
+  <a href="https://openai.com/index/introducing-codex/" target="_blank" rel="noopener noreferrer">
+    <img className="codex-icon" src="/images/codex-logo.svg" alt="Codex logo" style={{ width: '36px', height: '36px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.15)', cursor: 'pointer', transition: 'transform 0.2s' }} />
+  </a>
+  <span>After running the installer, the skill appears in your active skills in the Codex app:</span>
+</div>
+
+<img src="/images/codex-skill-installed.png" alt="React Magma skill installed in the Codex app" style={{ maxWidth: '500px', margin: '8px 0 16px' }} />
+
+Once installed, Codex automatically uses the skill whenever it detects a React Magma task — no need to manually activate it.
+
 
 ### Claude Code, Cursor, Copilot, and Others
 
@@ -93,7 +117,7 @@ Once installed, your AI tool will automatically follow these conventions:
     </TableRow>
     <TableRow>
       <TableCell>Compound components</TableCell>
-      <TableCell>Correct patterns for <Link to="/api/table">Table</Link>, <Link to="/api/tabs">Tabs</Link>, Dropdown, Accordion, and Popover.</TableCell>
+      <TableCell>Correct patterns for <Link to="/api/table">Table</Link>, <Link to="/api/tabs">Tabs</Link>, <Link to="/api/dropdown">Dropdown</Link>, <Link to="/api/accordion">Accordion</Link>, and <Link to="/api/popover">Popover</Link>.</TableCell>
     </TableRow>
     <TableRow>
       <TableCell>Dark mode</TableCell>
@@ -118,7 +142,7 @@ After installing, test with a prompt like:
 
 The output should look something like this:
 
-```jsx-noRender-startExpanded
+```jsx-noRender-noCodeSandbox
 import React from 'react';
 import {
   Input,
@@ -165,7 +189,7 @@ The skill contains these reference files:
     </TableRow>
     <TableRow>
       <TableCell><code>references/components.md</code></TableCell>
-      <TableCell>Full component catalog with all enum values and sub-components</TableCell>
+      <TableCell>Full component catalog with enum values and sub-components</TableCell>
     </TableRow>
     <TableRow>
       <TableCell><code>references/theme.md</code></TableCell>
